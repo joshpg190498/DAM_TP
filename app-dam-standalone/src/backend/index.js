@@ -7,7 +7,7 @@ const cors = require('cors');
 var express = require('express');
 var app = express();
 var pool = require('./mysql-connector');
-const routerDispositivo = require('./routes/dispositivos')
+const routerDevices = require('./routes/devices')
 
 
 const corsOptions = {
@@ -34,7 +34,7 @@ app.use(express.static('/home/node/app/static/'));
 app.use(cors(corsOptions))
 app.use(myLogger)
 
-app.use('/dispositivo', routerDispositivo)
+app.use('/devices', routerDevices)
 
 //=======[ Main module code ]==================================================
 
@@ -53,7 +53,7 @@ app.use('/dispositivo', routerDispositivo)
 
 
 var cb2 = function (req, res, next) {
-    res.send({'mensaje': 'Hola DAM!'}).status(200)
+    res.status(200).send({'message': 'DAM Backend is hosted here!'})
 }
 
 // app.get('/', [cb0, cb1, cb2]);
