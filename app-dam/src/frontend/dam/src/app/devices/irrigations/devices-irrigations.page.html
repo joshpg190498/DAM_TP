@@ -8,8 +8,26 @@
   </ion-header>
   
   <ion-content [fullscreen]="true">
-
     <ion-content>
+      <ion-grid>
+        <ion-row class="header-row">
+          <ion-col class="header-col centered-cell">Nombre</ion-col>
+          <ion-col class="header-col centered-cell">Ubicación</ion-col>
+          <ion-col class="header-col centered-cell">Estado</ion-col>
+          <ion-col class="header-col centered-cell">Fecha</ion-col>
+  
+        </ion-row>
+        <div *ngIf="irrigations">
+          <ion-row *ngFor="let irrigation of irrigations">
+            <ion-col class="centered-cell">{{ irrigation.nombre }}</ion-col>
+            <ion-col class="centered-cell">{{ irrigation.ubicacion }}</ion-col>
+            <ion-col class="centered-cell">
+              <div [innerHTML]="irrigation.apertura | chipValve"></div>
+            </ion-col>
+            <ion-col class="centered-cell">{{ irrigation.fecha | formatDate }}</ion-col>
+          </ion-row>
+        </div>
+      </ion-grid>
       
     </ion-content>
   </ion-content>

@@ -9,4 +9,9 @@ export class HomePage {
 
   constructor() {}
 
+
+  logout() {
+    localStorage.removeItem('token')
+    window.location.reload()
+  }
 }

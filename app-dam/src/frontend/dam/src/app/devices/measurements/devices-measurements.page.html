@@ -24,7 +24,7 @@
           <ion-col class="centered-cell">{{ measurement.ubicacion }}</ion-col>
           <ion-col class="centered-cell">{{ measurement.valor }}</ion-col>
           <ion-col class="centered-cell">
-            <div *ngIf="measurement.valor" [innerHTML]="measurement.valor | chipState"></div>
+            <div [innerHTML]="measurement.valor | chipState"></div>
           </ion-col>
           <ion-col class="centered-cell">{{ measurement.fecha | formatDate }}</ion-col>
         </ion-row>

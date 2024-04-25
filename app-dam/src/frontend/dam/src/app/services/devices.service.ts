@@ -31,4 +31,8 @@ export class DevicesService {
   getDeviceMeasurements (id: number): Promise<any> {
     return firstValueFrom(this._http.get(this.uri + `/${id}/measurements`))
   }
+
+  getDeviceIrrigations (id: number): Promise<any> {
+    return firstValueFrom(this._http.get(this.uri + `/${id}/irrigations`))
+  }
 }

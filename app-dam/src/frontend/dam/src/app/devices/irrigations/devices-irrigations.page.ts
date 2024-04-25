@@ -10,43 +10,29 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DevicesIrrigationsPage implements OnInit, OnDestroy {
 
-  deviceId: Number = 0
-  devices: any = []
+  deviceId: number = 0
+  irrigations: any = []
 
   constructor(private _devicesService: DevicesService,
     private _actRouter: ActivatedRoute) {
   }
 
   async ngOnInit() {
-    this.getDevices()
-  }
-
-  async getDevices() {
-    
-  }
-
-  ionViewWillEnter () {
     this.deviceId = Number(this._actRouter.snapshot.paramMap.get('id'))
+    this.getDeviceIrrigations()
   }
 
-  // mouseMove$ = fromEvent(document, 'mousemove')
-
-  // subscriptionMouseMove = this.mouseMove$.subscribe((evt: any) => {
-  //   console.log(`Coords: ${evt.clientX} X ${evt.clientY} Y`)
-  // })
-
-  subscribe () {
-    // this.subscription = this.observable$.subscribe((value) => {
-    //   console.log(value)
-    // })
-  }
-
-  unsubscribe () {
-    // this.subscription.unsubscribe()
+  async getDeviceIrrigations() {
+    this._devicesService.getDeviceIrrigations(this.deviceId)
+      .then((data) => {
+        console.log(data)
+        this.irrigations = data
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }
 
   ngOnDestroy(): void {
-    // this.subscription.unsubscribe()
-    // this.subscriptionMouseMove.unsubscribe()
   }
 }

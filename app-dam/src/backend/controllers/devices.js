@@ -67,10 +67,26 @@ function getLastValveState (req, res) {
         })
 }
 
+function getDeviceIrrigations (req, res) {
+    const deviceID = req.params.id
+    pool.query(`select d.nombre, d.ubicacion, d.electrovalvulaId, 
+    lr.logRiegoId, lr.apertura, lr.fecha from Log_Riegos lr
+    inner join Dispositivos d on d.electrovalvulaId = lr.electrovalvulaId 
+    where d.dispositivoId = ${deviceID} 
+    order by lr.fecha desc`, (err, result, fields) => {
+        if (err) {
+            return res.status(500).send(err)
+        }
+        const irrigations = result
+        return res.status(200).send(irrigations)
+    })
+}
+
 module.exports = {
     getAllDevices,
     getDevice,
     getDeviceMeasurements,
     getLastDeviceMeasurement,
-    getLastValveState
+    getLastValveState,
+    getDeviceIrrigations
 }

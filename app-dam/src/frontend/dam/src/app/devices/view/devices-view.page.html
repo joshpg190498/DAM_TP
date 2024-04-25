@@ -18,7 +18,7 @@
               
               <ion-row class="center-row">
                 <div [innerHTML]="valveState | chipValve"></div>
-                <div *ngIf="lastSensorValue" [innerHTML]="lastSensorValue | chipState"></div>
+                <div [innerHTML]="lastSensorValue | chipState"></div>
               </ion-row>
 
 
