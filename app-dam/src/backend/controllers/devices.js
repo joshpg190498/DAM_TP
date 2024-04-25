@@ -46,9 +46,28 @@ function getLastDeviceMeasurement (req, res) {
 
 }
 
+function getLastValveState (req, res) {
+    const deviceID = req.params.id
+    pool.query(`select d.dispositivoId, d.electrovalvulaId, 
+        lr.logRiegoId, lr.apertura, lr.fecha from Log_Riegos lr
+        inner join Dispositivos d on d.electrovalvulaId = lr.electrovalvulaId 
+        where d.dispositivoId = ${deviceID} 
+        order by lr.fecha desc 
+        limit 1`, (err, result, fields) => {
+            if (err) {
+                return res.status(500).send(err)
+            }
+            if(result.length === 0) {
+                return res.status(200).send(null)
+            }
+            return res.status(200).send(result[0])
+        })
+}
+
 module.exports = {
     getAllDevices,
     getDevice,
     getDeviceMeasurements,
-    getLastDeviceMeasurement
+    getLastDeviceMeasurement,
+    getLastValveState
 }

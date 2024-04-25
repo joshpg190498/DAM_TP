@@ -1,14 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription, fromEvent, interval, map } from 'rxjs';
-import { DevicesService } from '../services/devices.service';
+import { DevicesService } from '../../services/devices.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-devices-view',
-  templateUrl: './devices-view.page.html',
-  styleUrls: ['./devices.page.scss'],
+  selector: 'app-devices-measurements',
+  templateUrl: './devices-measurements.page.html',
+  styleUrls: ['./devices-measurements.page.scss'],
 })
-export class DevicesViewPage implements OnInit, OnDestroy {
+export class DevicesMeasurementsPage implements OnInit, OnDestroy {
 
   deviceId: Number = 0
   devices: any = []

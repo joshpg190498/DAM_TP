@@ -8,6 +8,7 @@ var express = require('express');
 var app = express();
 const routerDevices = require('./routes/devices')
 const routerAuth = require('./routes/auth')
+const routerIrrigations = require('./routes/irrigations')
 
 const corsOptions = {
     origin: '*',
@@ -28,6 +29,7 @@ app.use(myLogger)
 
 app.use('/auth', routerAuth)
 app.use('/devices', routerDevices)
+app.use('/irrigations', routerIrrigations)
 
 //=======[ Main module code ]==================================================
 
