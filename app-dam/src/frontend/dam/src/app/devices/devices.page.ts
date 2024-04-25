@@ -34,24 +34,6 @@ export class DevicesPage implements OnInit, OnDestroy {
     console.log(`Me llegó el id: ${Number(this._actRouter.snapshot.paramMap.get('id'))}`)
   }
 
-  // mouseMove$ = fromEvent(document, 'mousemove')
-
-  // subscriptionMouseMove = this.mouseMove$.subscribe((evt: any) => {
-  //   console.log(`Coords: ${evt.clientX} X ${evt.clientY} Y`)
-  // })
-
-  subscribe () {
-    // this.subscription = this.observable$.subscribe((value) => {
-    //   console.log(value)
-    // })
-  }
-
-  unsubscribe () {
-    // this.subscription.unsubscribe()
-  }
-
   ngOnDestroy(): void {
-    // this.subscription.unsubscribe()
-    // this.subscriptionMouseMove.unsubscribe()
   }
 }

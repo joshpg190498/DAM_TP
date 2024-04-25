@@ -10,43 +10,29 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DevicesMeasurementsPage implements OnInit, OnDestroy {
 
-  deviceId: Number = 0
-  devices: any = []
+  deviceId: number = 0
+  measurements: any = []
 
   constructor(private _devicesService: DevicesService,
     private _actRouter: ActivatedRoute) {
   }
 
   async ngOnInit() {
-    this.getDevices()
-  }
-
-  async getDevices() {
-    
-  }
-
-  ionViewWillEnter () {
     this.deviceId = Number(this._actRouter.snapshot.paramMap.get('id'))
+    this.getDeviceMeasurements()
   }
 
-  // mouseMove$ = fromEvent(document, 'mousemove')
-
-  // subscriptionMouseMove = this.mouseMove$.subscribe((evt: any) => {
-  //   console.log(`Coords: ${evt.clientX} X ${evt.clientY} Y`)
-  // })
-
-  subscribe () {
-    // this.subscription = this.observable$.subscribe((value) => {
-    //   console.log(value)
-    // })
-  }
-
-  unsubscribe () {
-    // this.subscription.unsubscribe()
+  async getDeviceMeasurements() {
+    this._devicesService.getDeviceMeasurements(this.deviceId)
+      .then((data) => {
+        console.log(data)
+        this.measurements = data
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }
 
   ngOnDestroy(): void {
-    // this.subscription.unsubscribe()
-    // this.subscriptionMouseMove.unsubscribe()
   }
 }

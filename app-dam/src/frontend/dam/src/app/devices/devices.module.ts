@@ -11,6 +11,8 @@ import { DevicesViewPage } from './view/devices-view.page';
 import { DevicesMeasurementsPage } from './measurements/devices-measurements.page';
 import { DevicesIrrigationsPage } from './irrigations/devices-irrigations.page';
 import { ChipPipe } from '../pipes/Chip.pipe';
+import { FormatDatePipe } from '../pipes/FormatDate.pipe';
+import { ValveStatePipe } from '../pipes/ValveState.pipe';
 
 @NgModule({
   imports: [
@@ -19,6 +21,6 @@ import { ChipPipe } from '../pipes/Chip.pipe';
     IonicModule,
     DevicesPageRoutingModule
   ],
-  declarations: [DevicesPage, DevicesViewPage, DevicesMeasurementsPage, DevicesIrrigationsPage, ChipPipe]
+  declarations: [DevicesPage, DevicesViewPage, DevicesMeasurementsPage, DevicesIrrigationsPage, ChipPipe, FormatDatePipe, ValveStatePipe]
 })
 export class DevicesPageModule {}

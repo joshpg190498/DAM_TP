@@ -17,10 +17,7 @@
             <ion-col size="6" class="ion-text-center">
               
               <ion-row class="center-row">
-                <ion-chip [color]="valveState ? 'primary' : 'medium'">
-                  <ion-icon name="water"></ion-icon>
-                  <ion-label>{{ valveState ? 'Abierto' : 'Cerrado' }}</ion-label>
-                </ion-chip>
+                <div [innerHTML]="valveState | chipValve"></div>
                 <div *ngIf="lastSensorValue" [innerHTML]="lastSensorValue | chipState"></div>
               </ion-row>
 

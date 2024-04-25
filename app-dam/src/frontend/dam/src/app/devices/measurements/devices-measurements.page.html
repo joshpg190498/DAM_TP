@@ -1,16 +1,35 @@
 <ion-header [translucent]="true">
-    <ion-toolbar>
-      <ion-title slot="start">DISPOSITIVO {{deviceId}} - MEDICIONES</ion-title>
-      <ion-buttons slot="end">
-        <ion-back-button defaultHref="/devices/{{deviceId}}"> </ion-back-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content [fullscreen]="true">
+  <ion-toolbar>
+    <ion-title slot="start">DISPOSITIVO {{ deviceId }} - MEDICIONES</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/devices/{{ deviceId }}"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
-    <ion-content>
-      
-    </ion-content>
+<ion-content [fullscreen]="true">
+  <ion-content>
+    <ion-grid>
+      <ion-row class="header-row">
+        <ion-col class="header-col centered-cell">Nombre</ion-col>
+        <ion-col class="header-col centered-cell">Ubicación</ion-col>
+        <ion-col class="header-col centered-cell">Valor</ion-col>
+        <ion-col class="header-col centered-cell">Estado</ion-col>
+        <ion-col class="header-col centered-cell">Fecha</ion-col>
+
+      </ion-row>
+      <div *ngIf="measurements">
+        <ion-row *ngFor="let measurement of measurements">
+          <ion-col class="centered-cell">{{ measurement.nombre }}</ion-col>
+          <ion-col class="centered-cell">{{ measurement.ubicacion }}</ion-col>
+          <ion-col class="centered-cell">{{ measurement.valor }}</ion-col>
+          <ion-col class="centered-cell">
+            <div *ngIf="measurement.valor" [innerHTML]="measurement.valor | chipState"></div>
+          </ion-col>
+          <ion-col class="centered-cell">{{ measurement.fecha | formatDate }}</ion-col>
+        </ion-row>
+      </div>
+    </ion-grid>
+    
   </ion-content>
-  
+</ion-content>

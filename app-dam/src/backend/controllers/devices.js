@@ -22,7 +22,10 @@ function getDevice (req, res) {
 
 function getDeviceMeasurements (req, res) {
     const deviceID = req.params.id
-    pool.query(`select * from Mediciones where dispositivoId = ${deviceID}`, (err, result, fields) => {
+    pool.query(`select d.nombre, d.ubicacion, m.valor, m.fecha from Mediciones m
+        inner join Dispositivos d on d.dispositivoId = m.dispositivoId
+        where m.dispositivoId = ${deviceID} 
+        order by m.fecha desc`, (err, result, fields) => {
         if (err) {
             return res.status(500).send(err)
         }

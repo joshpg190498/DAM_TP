@@ -52,25 +52,7 @@ export class DevicesViewPage implements OnInit, OnDestroy {
     }
   }
 
-  // mouseMove$ = fromEvent(document, 'mousemove')
-
-  // subscriptionMouseMove = this.mouseMove$.subscribe((evt: any) => {
-  //   console.log(`Coords: ${evt.clientX} X ${evt.clientY} Y`)
-  // })
-
-  subscribe () {
-    // this.subscription = this.observable$.subscribe((value) => {
-    //   console.log(value)
-    // })
-  }
-
-  unsubscribe () {
-    // this.subscription.unsubscribe()
-  }
-
   ngOnDestroy(): void {
-    // this.subscription.unsubscribe()
-    // this.subscriptionMouseMove.unsubscribe()
   }
 
   insertLogRiego() {
