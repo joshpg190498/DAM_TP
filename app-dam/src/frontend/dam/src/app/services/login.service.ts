@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Router } from '@angular/router'
+import { API_URL } from '../app.constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  uri = 'http://localhost:8000'
+  uri = API_URL + '/auth'
 
   constructor(private _http: HttpClient, private _router: Router) { }
 

@@ -18,6 +18,9 @@ export class LoginPage {
   
     if (form.valid) {
       this._loginService.login(this.login.username, this.login.password)
+        .then((res) => {
+          
+        })
     } 
   }
 }

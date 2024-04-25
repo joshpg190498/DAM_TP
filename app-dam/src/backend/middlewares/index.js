@@ -1,6 +1,6 @@
 const SECRET_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'
 
-export default function authenticator (req, res, next) {
+function authenticator (req, res, next) {
     let autHeader = (req.headers.authorization || '')
     let token = ''
     if (autHeader.startsWith('Bearer ')) {
@@ -14,4 +14,8 @@ export default function authenticator (req, res, next) {
         res.status(403).send({ message: 'Token inválido' })
       }
     next()
+}
+
+module.exports = {
+    authenticator
 }

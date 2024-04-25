@@ -14,8 +14,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'dispositivos',
-    loadChildren: () => import('./dispositivos/dispositivos.module').then( m => m.DispositivosPageModule),
+    path: 'devices',
+    loadChildren: () => import('./devices/devices.module').then( m => m.DevicesPageModule),
     canActivate: [AuthGuard]
   },
   {

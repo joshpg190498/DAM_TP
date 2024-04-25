@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title slot="start">DISPOSITIVOS</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/home"> </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-list>
+      <ion-item *ngFor="let device of devices" [routerLink]="'/devices/' + device.dispositivoId" detail="false">
+        <ion-icon slot="start" name="thermometer"></ion-icon>
+        <ion-label>
+          <h2>Identificador: {{ device.dispositivoId }}</h2>
+          <p>Nombre: {{ device.nombre }}</p>
+          <p>Ubicación: {{ device.ubicacion }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
